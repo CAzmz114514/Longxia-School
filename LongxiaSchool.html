@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>龙夏高中 · 官网</title>
+    <style>
+        /* ===== 全局重置 & 字体 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== 顶部栏 ===== */
+        .topbar {
+            background: #0b1a2e;
+            color: #b0c4de;
+            font-size: 14px;
+            padding: 6px 0;
+        }
+
+        .topbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .topbar .contact span {
+            margin-right: 20px;
+        }
+
+        .topbar .contact i {
+            margin-right: 4px;
+        }
+
+        .topbar .login a {
+            color: #b0c4de;
+            margin-left: 16px;
+            transition: color 0.2s;
+        }
+
+        .topbar .login a:hover {
+            color: #ffd700;
+        }
+
+        /* ===== 头部 ===== */
+        .header {
+            background: linear-gradient(135deg, #0b2a42 0%, #1a4a6e 100%);
+            color: #fff;
+            padding: 18px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo .icon {
+            font-size: 40px;
+            background: #ffd700;
+            color: #0b1a2e;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+
+        .logo h1 {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .logo h1 span {
+            color: #ffd700;
+        }
+
+        .logo .sub {
+            font-size: 14px;
+            opacity: 0.8;
+            letter-spacing: 4px;
+            margin-top: 2px;
+        }
+
+        /* ===== 导航 ===== */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 14px 22px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #1e2a3a;
+            border-radius: 6px 6px 0 0;
+            transition: all 0.25s;
+            position: relative;
+        }
+
+        .nav-links li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 4px 4px 0 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links li a:hover {
+            background: #f0f4fa;
+            color: #0b2a42;
+        }
+
+        .nav-links li a:hover::after {
+            width: 60%;
+        }
+
+        .nav-links li a.active {
+            color: #0b2a42;
+            background: #f0f4fa;
+        }
+
+        .nav-links li a.active::after {
+            width: 60%;
+        }
+
+        .nav-links li a.active {
+            color: #0b2a42;
+            font-weight: 600;
+        }
+
+        /* ===== 搜索框 ===== */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f0f4fa;
+            border-radius: 30px;
+            padding: 4px 4px 4px 16px;
+            border: 1px solid #e2e8f0;
+            transition: border 0.2s;
+        }
+
+        .search-box:focus-within {
+            border-color: #ffd700;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 6px 0;
+            font-size: 14px;
+            outline: none;
+            width: 140px;
+            color: #1e2a3a;
+        }
+
+        .search-box input::placeholder {
+            color: #9aa6b5;
+        }
+
+        .search-box button {
+            background: #ffd700;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #0b1a2e;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-box button:hover {
+            background: #f0c000;
+        }
+
+        /* ===== Banner ===== */
+        .banner {
+            background: linear-gradient(135deg, #0b2a42 0%, #1f5a7a 100%);
+            padding: 50px 0 40px;
+            color: #fff;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: "✧";
+            position: absolute;
+            right: -40px;
+            bottom: -40px;
+            font-size: 300px;
+            opacity: 0.06;
+            color: #ffd700;
+        }
+
+        .banner .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .banner-text h2 {
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .banner-text h2 span {
+            color: #ffd700;
+        }
+
+        .banner-text p {
+            font-size: 18px;
+            opacity: 0.85;
+            max-width: 580px;
+        }
+
+        .banner-text .btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: #ffd700;
+            color: #0b1a2e;
+            padding: 12px 36px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(255, 215, 0, 0.3);
+        }
+
+        .banner-text .btn:hover {
+            background: #f0c000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.4);
+        }
+
+        .banner-stats {
+            display: flex;
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 24px 36px;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .banner-stats .stat {
+            text-align: center;
+        }
+
+        .banner-stats .stat .num {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .banner-stats .stat .label {
+            font-size: 14px;
+            opacity: 0.75;
+        }
+
+        /* ===== 新闻区域 ===== */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0b1a2e;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .line {
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(to right, #ffd700, transparent);
+            border-radius: 4px;
+        }
+
+        .section-sub {
+            color: #6a7a8a;
+            margin-bottom: 28px;
+            font-size: 16px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* ===== 主新闻（特色） ===== */
+        .featured-news {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .featured-news:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-news .news-img {
+            height: 220px;
+            background: linear-gradient(135deg, #1a4a6e, #0b2a42);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            color: #ffd700;
+            position: relative;
+        }
+
+        .featured-news .news-img .badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: #ffd700;
+            color: #0b1a2e;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .featured-news .news-body {
+            padding: 28px 30px 30px;
+        }
+
+        .featured-news .news-body .meta {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: #8a9aa8;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .featured-news .news-body .meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .featured-news .news-body h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0b1a2e;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .featured-news .news-body p {
+            color: #3a4a5a;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .featured-news .news-body .read-more {
+            display: inline-block;
+            color: #0b2a42;
+            font-weight: 600;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 2px;
+            transition: all 0.2s;
+        }
+
+        .featured-news .news-body .read-more:hover {
+            color: #ffd700;
+            border-color: #0b2a42;
+        }
+
+        /* ===== 侧边新闻列表 ===== */
+        .side-news {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .side-news .news-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s;
+            border-left: 4px solid #ffd700;
+        }
+
+        .side-news .news-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .side-news .news-item .meta {
+            font-size: 13px;
+            color: #8a9aa8;
+            margin-bottom: 4px;
+        }
+
+        .side-news .news-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0b1a2e;
+            margin-bottom: 4px;
+        }
+
+        .side-news .news-item p {
+            font-size: 14px;
+            color: #5a6a7a;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ===== 新闻正文（展开） ===== */
+        .news-detail {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 44px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+
+        .news-detail .news-header {
+            border-bottom: 2px solid #f0f4fa;
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .news-detail .news-header .meta {
+            display: flex;
+            gap: 24px;
+            font-size: 14px;
+            color: #8a9aa8;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .news-detail .news-header h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #0b1a2e;
+            line-height: 1.3;
+        }
+
+        .news-detail .news-header .subtitle {
+            font-size: 18px;
+            color: #3a4a5a;
+            margin-top: 6px;
+        }
+
+        .news-detail .news-content {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #1e2a3a;
+        }
+
+        .news-detail .news-content p {
+            margin-bottom: 18px;
+        }
+
+        .news-detail .news-content .highlight {
+            background: #fef7e0;
+            padding: 16px 24px;
+            border-radius: 12px;
+            border-left: 5px solid #ffd700;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .news-detail .news-content .quote {
+            font-size: 20px;
+            font-weight: 500;
+            color: #0b2a42;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 2px dashed #e2e8f0;
+            border-bottom: 2px dashed #e2e8f0;
+            margin: 24px 0;
+        }
+
+        .news-detail .news-content .img-placeholder {
+            background: linear-gradient(135deg, #e8edf3, #d5dee8);
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #5a6a7a;
+            margin: 24px 0;
+            font-size: 15px;
+        }
+
+        .news-detail .news-content .img-placeholder span {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ===== 底部 ===== */
+        .footer {
+            background: #0b1a2e;
+            color: #b0c4de;
+            padding: 48px 0 28px;
+            margin-top: 40px;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer h5 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .footer p,
+        .footer li {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 2;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li a:hover {
+            color: #ffd700;
+            opacity: 1;
+        }
+
+        .footer .copyright {
+            grid-column: 1 / -1;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.6;
+            margin-top: 10px;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 992px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .logo h1 {
+                font-size: 24px;
+            }
+
+            .navbar .container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .nav-links li a {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+            .search-box input {
+                width: 100%;
+            }
+
+            .banner-text h2 {
+                font-size: 28px;
+            }
+            .banner-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+                padding: 18px 24px;
+                justify-content: center;
+            }
+
+            .news-detail {
+                padding: 24px 20px;
+            }
+            .news-detail .news-header h2 {
+                font-size: 24px;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .featured-news .news-body {
+                padding: 20px;
+            }
+            .featured-news .news-body h3 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo .icon {
+                width: 44px;
+                height: 44px;
+                font-size: 30px;
+            }
+            .logo h1 {
+                font-size: 20px;
+            }
+            .banner-text h2 {
+                font-size: 22px;
+            }
+            .topbar .contact span {
+                display: block;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== 顶栏 ===== -->
+    <div class="topbar">
+        <div class="container">
+            <div class="contact">
+                <span>📞 0797-8888-666</span>
+                <span>✉ office@longxia.edu</span>
+            </div>
+            <div class="login">
+                <a href="#">教师入口</a>
+                <a href="#">学生入口</a>
+                <a href="#">家长入口</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 头部 ===== -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="icon">龙</div>
+                <div>
+                    <h1>龙夏<span>高中</span></h1>
+                    <div class="sub">LONGXIA HIGH SCHOOL</div>
+                </div>
+            </div>
+            <div style="font-size:15px; opacity:0.75; letter-spacing:2px; text-align:right;">
+                立德 · 笃学 · 创新
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== 导航 ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">学校概况</a></li>
+                <li><a href="#">新闻中心</a></li>
+                <li><a href="#">教学科研</a></li>
+                <li><a href="#">招生信息</a></li>
+                <li><a href="#">德育之窗</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="搜索..." />
+                <button>搜索</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== Banner ===== -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-text">
+                <h2>🌿 龙夏高中 · <span>新闻中心</span></h2>
+                <p>记录校园点滴，传递教育温度。在这里，了解龙夏最鲜活的动态。</p>
+                <a href="#" class="btn">浏览全部新闻 →</a>
+            </div>
+            <div class="banner-stats">
+                <div class="stat">
+                    <div class="num">1200+</div>
+                    <div class="label">在校学生</div>
+                </div>
+                <div class="stat">
+                    <div class="num">86</div>
+                    <div class="label">教职工</div>
+                </div>
+                <div class="stat">
+                    <div class="num">32</div>
+                    <div class="label">教学班级</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 新闻区域 ===== -->
+    <section class="container">
+        <div class="section-title">
+            <span>📰 最新动态</span>
+            <span class="line"></span>
+        </div>
+        <div class="section-sub">聚焦龙夏 · 今日头条</div>
+
+        <!-- 新闻网格 -->
+        <div class="news-grid">
+            <!-- 主新闻 -->
+            <div class="featured-news">
+                <div class="news-img">
+                    <span>👨‍👦</span>
+                    <span class="badge">🔥 头条</span>
+                </div>
+                <div class="news-body">
+                    <div class="meta">
+                        <span>📅 2026年6月29日</span>
+                        <span>🏷️ 校园活动</span>
+                        <span>👁️ 阅读 1,286</span>
+                    </div>
+                    <h3>校长龙为人与高一（3）班学生龙夏夏祖孙同框，共度亲子活动日</h3>
+                    <p>
+                        6月28日上午，龙夏高中首届“家校共育·亲子同行”主题活动在校园田径场温情启幕。
+                        校长龙为人先生携同正在我校高一（3）班就读的孙子龙夏夏同学共同参与，成为全场最温暖的焦点……
+                    </p>
+                    <a href="#news-detail" class="read-more">阅读全文 →</a>
+                </div>
+            </div>
+
+            <!-- 侧边新闻 -->
+            <div class="side-news">
+                <div class="news-item">
+                    <div class="meta">📅 2026-06-27</div>
+                    <h4>龙夏高中2026年高考再创佳绩，一本上线率突破72%</h4>
+                    <p>全校师生凝心聚力，本科上线率98.6%，创历史新高。</p>
+                </div>
+                <div class="news-item">
+                    <div class="meta">📅 2026-06-25</div>
+                    <h4>市中学生篮球联赛冠军！龙夏男篮勇夺桂冠</h4>
+                    <p>决赛中战胜卫冕冠军，时隔三年再次捧起奖杯。</p>
+                </div>
+                <div class="news-item">
+                    <div class="meta">📅 2026-06-22</div>
+                    <h4>龙夏高中获评“江西省绿色校园”荣誉称号</h4>
+                    <p>践行生态文明理念，打造花园式校园环境。</p>
+                </div>
+                <div class="news-item">
+                    <div class="meta">📅 2026-06-18</div>
+                    <h4>高一（3）班开展“走近科学家”主题研学活动</h4>
+                    <p>同学们走进科技馆，近距离感受科学魅力。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 新闻详细正文 ===== -->
+        <div id="news-detail" class="news-detail">
+            <div class="news-header">
+                <div class="meta">
+                    <span>📅 2026年6月29日</span>
+                    <span>✍️ 龙夏高中新闻中心</span>
+                    <span>🏷️ 亲子活动 · 家校共育</span>
+                </div>
+                <h2>校长龙为人与高一（3）班学生龙夏夏祖孙同框，共度亲子活动日</h2>
+                <div class="subtitle">—— 龙夏高中首届“家校共育·亲子同行”主题活动温情纪实</div>
+            </div>
+
+            <div class="news-content">
+                <p>
+                    <strong>龙夏高中6月29日电</strong> （记者 李明轩）6月28日上午，阳光和煦，微风不燥。
+                    龙夏高中校园内洋溢着欢声笑语，首届“家校共育·亲子同行”主题活动在这里隆重举行。
+                    全校近千名师生与家长齐聚田径场，共同参与这场以“爱与成长”为主题的亲子盛会。
+                </p>
+
+                <p>
+                    活动伊始，龙夏高中校长<strong>龙为人</strong>先生发表了热情洋溢的致辞。
+                    他动情地说：“教育从来不是学校的独角戏，而是家庭与学校共同谱写的交响乐。
+                    今天，我既是校长，也是一名普通的爷爷——我的孙子<strong>龙夏夏</strong>同学就在高一（3）班就读。
+                    能和他一起参加今天的活动，我倍感幸福。”
+                </p>
+
+                <div class="highlight">
+                    🌟 龙校长话音刚落，全场响起了热烈的掌声。坐在台下第一排的龙夏夏同学腼腆地笑了，
+                    身边的同学们纷纷向他投来羡慕的目光。
+                </div>
+
+                <p>
+                    在随后的“亲子接力赛”环节中，龙校长与龙夏夏同学组成“祖孙搭档”，
+                    共同完成了“两人三足”和“托球跑”两项比赛。尽管龙校长已年过六旬，
+                    但他步伐稳健，与孙子配合默契，引得围观师生和家长阵阵喝彩。
+                    龙夏夏同学赛后兴奋地表示：“能和爷爷一起在赛场上奔跑，是我高中生活最难忘的回忆之一。”
+                </p>
+
+                <div class="img-placeholder">
+                    <span>📸</span>
+                    【 亲子接力赛现场 · 龙校长与龙夏夏同学默契配合 】
+                    <br /><small style="color:#8a9aa8;">（图为活动精彩瞬间）</small>
+                </div>
+
+                <p>
+                    高一（3）班班主任王丽老师介绍，龙夏夏同学平时学习刻苦，性格开朗，在班级中深受同学喜爱。
+                    “他从不因为自己是校长的孙子而搞特殊，反而更加严格要求自己。
+                    今天看到他和爷爷在赛场上的互动，我们班很多同学都说‘太有爱了’。”
+                </p>
+
+                <div class="quote">
+                    “教育是一场温暖的修行，而亲情是最好的养分。”
+                    <br />—— 龙为人校长
+                </div>
+
+                <p>
+                    活动现场还设置了“亲子寄语墙”“家庭合影区”“感恩卡制作”等丰富多彩的环节。
+                    家长们纷纷表示，这样的活动拉近了他们与孩子之间的距离，也让他们更加理解学校的教育理念。
+                    一位家长感慨道：“平时工作忙，很少有机会和孩子这样深度互动，
+                    感谢学校搭建了这么好的平台，让我们看到了孩子在学校里阳光、自信的一面。”
+                </p>
+
+                <p>
+                    据悉，龙夏高中一直高度重视家校共育工作，本学期已举办家长课堂、家长开放日等活动十余场。
+                    龙为人校长表示，未来学校将继续深化家校协同育人机制，让每一个孩子都能在爱与关怀中茁壮成长。
+                </p>
+
+                <p style="color:#6a7a8a; font-size:15px; border-top:1px solid #eef2f6; padding-top:20px; margin-top:24px;">
+                    <strong>编辑：</strong> 张慧  <strong>审核：</strong> 陈志远  <strong>摄影：</strong> 刘洋
+                </p>
+            </div>
+        </div>
+
+        <!-- 更多新闻 -->
+        <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding-bottom:10px;">
+            <span style="font-weight:600; font-size:18px;">📌 更多新闻</span>
+            <a href="#" style="color:#0b2a42; font-weight:500; border-bottom:2px solid #ffd700; padding-bottom:2px;">查看全部 →</a>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:18px; margin-bottom:20px;">
+            <div style="background:#fff; border-radius:14px; padding:18px 20px; box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+                <div style="font-size:13px; color:#8a9aa8;">2026-06-26</div>
+                <h4 style="font-size:15px; margin:4px 0;">龙夏高中举办“最美教室”评比活动</h4>
+            </div>
+            <div style="background:#fff; border-radius:14px; padding:18px 20px; box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+                <div style="font-size:13px; color:#8a9aa8;">2026-06-24</div>
+                <h4 style="font-size:15px; margin:4px 0;">高三年级举行“冲刺2026”誓师大会</h4>
+            </div>
+            <div style="background:#fff; border-radius:14px; padding:18px 20px; box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+                <div style="font-size:13px; color:#8a9aa8;">2026-06-20</div>
+                <h4 style="font-size:15px; margin:4px 0;">龙夏高中与市图书馆共建“阅读基地”</h4>
+            </div>
+            <div style="background:#fff; border-radius:14px; padding:18px 20px; box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+                <div style="font-size:13px; color:#8a9aa8;">2026-06-17</div>
+                <h4 style="font-size:15px; margin:4px 0;">我校教师团队获省级教学成果一等奖</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 底部 ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <h5>🏫 龙夏高中</h5>
+                <p>立德树人 · 追求卓越</p>
+                <p style="opacity:0.6; font-size:13px; margin-top:6px;">
+                    赣州市章贡区龙夏路1号<br />
+                    邮编：341000
+                </p>
+            </div>
+            <div>
+                <h5>快速链接</h5>
+                <ul>
+                    <li><a href="#">学校简介</a></li>
+                    <li><a href="#">招生简章</a></li>
+                    <li><a href="#">教师队伍</a></li>
+                    <li><a href="#">校园风光</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>联系方式</h5>
+                <ul>
+                    <li>📞 0797-8888-666</li>
+                    <li>✉ office@longxia.edu</li>
+                    <li>🕘 8:00 – 17:30</li>
+                </ul>
+            </div>
+            <div>
+                <h5>关注我们</h5>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">官方微博</a></li>
+                    <li><a href="#">抖音号</a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                © 2026 龙夏高中 Longxia High School. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- 平滑滚动锚点 -->
+    <script>
+        // 平滑滚动到新闻详情
+        document.querySelector('.read-more')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector('#news-detail');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    </script>
+</body>
+</html>
